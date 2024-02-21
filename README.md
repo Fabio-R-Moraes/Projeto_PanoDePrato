@@ -1,1 +1,1 @@
-"# Django pano de prato" 
+"# Django projeto pano de prato" 

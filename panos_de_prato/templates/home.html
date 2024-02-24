@@ -1,16 +1,19 @@
 {% include 'parciais/cabecalho.html' %}
 
 <body>
-    <header class="main-header-container">
-        <div class="main-header-container">
-            <h1>
-                <a class="main-logo" href="/">
-                    <i class="fas fa-address-book main-logo-icon"></i>
-                    <span class="main-logo-text">Galeria de Panos de Prato da {{ nome }}</span>
-                </a>
-            </h1>
+    {% include 'parciais/titulo.html' %}
+    {% include 'parciais/pesquisa.html' %}
+    <main class="main-content-container">
+        <div class="main-content main-content-list container">
+            {% include 'parciais/panos.html' %}
+            {% include 'parciais/panos.html' %}
+            {% include 'parciais/panos.html' %}
+            {% include 'parciais/panos.html' %}
+            {% include 'parciais/panos.html' %}
+            {% include 'parciais/panos.html' %}
         </div>
-    </header>
+    </main>
+    {% include 'parciais/footer.html' %}
 </body>
 
 </html>

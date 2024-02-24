@@ -1,9 +1,6 @@
-{% include 'parciais/cabecalho.html' %}
-
-<body>
-    {% include 'parciais/titulo.html' %}
-    {% include 'parciais/pesquisa.html' %}
-    <main class="main-content-container">
+{% extends 'parciais/base.html' %}
+{% block titulo %}Home | {% endblock %}
+{% block conteudo %}
         <div class="main-content main-content-list container">
             {% include 'parciais/panos.html' %}
             {% include 'parciais/panos.html' %}
@@ -12,8 +9,4 @@
             {% include 'parciais/panos.html' %}
             {% include 'parciais/panos.html' %}
         </div>
-    </main>
-    {% include 'parciais/footer.html' %}
-</body>
-
-</html>
+{% endblock %}

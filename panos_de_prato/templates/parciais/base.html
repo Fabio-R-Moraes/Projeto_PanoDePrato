@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% include 'parciais/cabecalho.html' %}
+    <title>{% block titulo %}{% endblock %}Panos de Prato</title>
+</head>
+<body>
+    {% include 'parciais/titulo.html' %}
+    {% include 'parciais/pesquisa.html' %}
+    <main class="main-content-container">
+        {% block conteudo %} {% endblock %}
+    </main>
+    {% include 'parciais/footer.html' %}
+</body>
+
+</html>

@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from utils.fabrica import make_recipe
 
 def home(request):
     return render(request, 'home.html', context={
-        'nome': 'Rachel Moreira'
+        'panos': [make_recipe() for _ in range(10)],
     })
 
 def pano(request, id):
     return render(request, 'panos-view.html', context={
-        'nome': 'Rachel Moraes',
+        'panos': make_recipe(),
         })

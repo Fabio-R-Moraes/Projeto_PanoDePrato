@@ -2,11 +2,8 @@
 {% block titulo %}Home | {% endblock %}
 {% block conteudo %}
         <div class="main-content main-content-list container">
-            {% include 'parciais/panos.html' %}
-            {% include 'parciais/panos.html' %}
-            {% include 'parciais/panos.html' %}
-            {% include 'parciais/panos.html' %}
-            {% include 'parciais/panos.html' %}
-            {% include 'parciais/panos.html' %}
+            {% for  pano in panos %}
+                {% include 'parciais/panos.html' %}
+            {% endfor %}
         </div>
 {% endblock %}

@@ -8,5 +8,6 @@ def home(request):
 
 def pano(request, id):
     return render(request, 'panos-view.html', context={
-        'panos': make_recipe(),
+        'pano': make_recipe(),
+        'is_detail_page': True,
         })

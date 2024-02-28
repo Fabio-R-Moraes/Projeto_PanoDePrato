@@ -1,38 +1,48 @@
 <div class="panos panos-list-item">
     <div class="panos-imagem">
         <a href="{% url 'panos-pano' pano.id %}">
-            <img src="{{ pano.cover.url }}" alt="Temporário">
+            <img src="{{ pano.pano_imagem.url }}" alt="Temporário">
         </a>
     </div>
     <div class="panos-title-container">
         <a href="{% url 'panos-pano' pano.id %}">
-            <h2 class="panos-title">{{ pano.title }}</h2>
+            <h2 class="panos-title">{{ pano.titulo }}</h2>
         </a>
     </div>
     <div class="panos-autor">
         <span class="panos-autor-item">
             <i class="fas fa-user"></i>
-            {{ pano.author.first_name }} {{ pano.author.last_name }}
+            {% if pano.autor is not None %}
+                {% if pano.autor.first_name %}
+                    {{ pano.autor.first_name }} {{ pano.autor.last_name }}
+                {% else %}
+                    {{ pano.autor.username }}
+                {% endif %}
+            {% else %}
+                Desconhecido
+            {% endif %}
         </span>
         <span class="panos-autor-item">
             <i class="fas fa-calendar-alt"></i>
-            {{ pano.created_at | date:"d/m/Y" }} às {{ pano.creared_at | date:"H:i" }}
+            {{ pano.criado_em | date:"d/m/Y" }} às {{ pano.criado_em | date:"H:i" }}
         </span>
-        <span class="panos-autor-item">
-            <a href="panos_de_prato/categoria/busto">
-                <i class="fas fa-layer-group"></i>
-                {{ pano.category.name }}
-            </a>
-        </span>
+        {% if pano.categoria is not None %}
+            <span class="panos-autor-item">
+                <a href="{% url 'categoria' pano.categoria.id %}">
+                    <i class="fas fa-layer-group"></i>
+                    {{ pano.categoria.nome }}
+                </a>
+            </span>
+        {% endif %}
     </div>
     <div class="panos-content">
-        <p>{{ pano.description }}</p>
+        <p>{{ pano.descricao }}</p>
     </div>
     <div class="pano-meta-container">
         <div class="panos-meta panos-preco">
             <h3 class="panos-meta-title"><i class="fas fa-coins"></i>Valor</h3>
             <div class="panos-meta-text">
-                R$ {{ pano.valor_preco }} {{ pano.valor_preco_unit }}
+                R$ {{ pano.preco }} {{ pano.ubiudade_preco }}
             </div>
         </div>
     </div>

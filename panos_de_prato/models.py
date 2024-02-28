@@ -16,9 +16,10 @@ class Panos(models.Model):
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
     esta_publicado = models.BooleanField(default=False)
-    pano_imagem = models.ImageField(upload_to='panos_de_prato/panos_imagens/%d/%m/%Y/')
+    pano_imagem = models.ImageField(upload_to='panos_de_prato/panos_imagens/%d/%m/%Y/', 
+                                    blank=True, default='')
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.SET_NULL, null=True
+        Categoria, on_delete=models.SET_NULL, null=True, blank=True, default=None
     )
     autor = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True

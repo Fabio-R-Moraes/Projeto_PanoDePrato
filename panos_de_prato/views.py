@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
-from utils.fabrica import make_recipe
 from .models import Panos, Categoria
+from django.http import Http404
 
 def home(request):
-    panos = Panos.objects.filter(esta_publicado=False).order_by('-id')
+    panos = Panos.objects.filter(esta_publicado=True).order_by('-id')
     return render(request, 'home.html', context={
         'panos': panos,
     })
@@ -21,3 +21,10 @@ def categoria(request, categoria_id):
         'panos': panos,
         'titulo': f'{panos[0].categoria.nome} - Categoria | ',
     })
+
+def procurar(request):
+    termo_procurado = request.GET.get('q')
+
+    if not termo_procurado:
+        raise Http404()
+    return render(request, 'procurar.html')

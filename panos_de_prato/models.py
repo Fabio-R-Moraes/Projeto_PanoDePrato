@@ -10,7 +10,7 @@ class  Categoria(models.Model):
 class Panos(models.Model):
     titulo = models.CharField(max_length=65)
     descricao = models.CharField(max_length=165)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     preco = models.DecimalField(max_digits=4, decimal_places=2)
     unidade_preco = models.CharField(max_length=10)
     criado_em = models.DateTimeField(auto_now_add=True)

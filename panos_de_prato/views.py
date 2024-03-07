@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
-from .models import Panos, Categoria
+from .models import Panos
 from django.http import Http404
+from django.db.models import Q
 
 def home(request):
     panos = Panos.objects.filter(esta_publicado=True).order_by('-id')
@@ -23,8 +24,20 @@ def categoria(request, categoria_id):
     })
 
 def procurar(request):
-    termo_procurado = request.GET.get('q')
+    termo_procurado = request.GET.get('q','').strip()
 
     if not termo_procurado:
         raise Http404()
-    return render(request, 'procurar.html')
+    
+    panos = Panos.objects.filter(
+        Q(
+            Q(titulo__icontains=termo_procurado) | 
+            Q(descricao__icontains=termo_procurado),
+        ),
+        esta_publicado=True,
+    ).order_by('-titulo')
+
+    return render(request, 'procurar.html', {
+        'page_title': f'Pesquisando por "{termo_procurado}" |', 
+        'panos': panos,
+    })

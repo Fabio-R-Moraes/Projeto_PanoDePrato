@@ -5,7 +5,7 @@ class PanosURLSTest(TestCase):
     def test_panos_home_url_esta_correta(self):
         url = reverse('panos:home')
         self.assertEqual(url, '/')
-
+        
     def test_panos_categoria_url_esta_correta(self):
         url = reverse('panos:categoria', kwargs={'categoria_id':1})
         self.assertEqual(url, '/panos_de_prato/categoria/1/')

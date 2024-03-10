@@ -44,3 +44,21 @@ class PanosHomeViewTests(PanosTestBase):
         response = self.client.get(reverse('panos:home'))
 
         self.assertIn('<h1>Não há panos de prato para mostrar...</h1>', response.content.decode('utf-8'))
+
+    #Esse teste não funciona por causa do campo <pano_imagem>
+    '''def test_panos_home_esta_paginando(self):
+        for i in range(18):
+            kwargs={
+                'autor_data': {
+                    'username': f'Fábio_{i}'
+                },
+                'slug': f'programador_{i}',
+            }
+            self.faca_pano(**kwargs)
+
+        response = self.client.get(reverse('panos:home'))
+        panos = response.context['panos']
+        paginacao = panos.paginador
+
+        self.assertEqual(paginacao.num_pages, 3)'''
+    

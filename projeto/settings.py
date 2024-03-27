@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'panos_de_prato',
+    'autores',
 ]
 
 MIDDLEWARE = [
